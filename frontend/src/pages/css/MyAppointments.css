@@ -1,0 +1,60 @@
+.appointments-title {
+    @apply pb-3 mt-12 text-lg font-medium text-gray-600 border-b;
+  }
+  
+  .appointment-card {
+    @apply grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-4 border-b;
+  }
+  
+  .appointment-doctor-image {
+    @apply w-36 bg-[#EAEFFF];
+  }
+  
+  .appointment-details {
+    @apply flex-1 text-sm text-[#5E5E5E];
+  }
+  
+  .doctor-name {
+    @apply text-[#262626] text-base font-semibold;
+  }
+  
+  .address-title {
+    @apply text-[#464646] font-medium mt-1;
+  }
+  
+  .date-time {
+    @apply mt-1;
+  }
+  
+  .date-time-title {
+    @apply text-sm text-[#3C3C3C] font-medium;
+  }
+  
+  .appointment-actions {
+    @apply flex flex-col gap-2 justify-end text-sm text-center;
+  }
+  
+  .pay-online-button, .paid-button, .completed-button, .cancel-button, .cancelled-button {
+    @apply text-[#696969] sm:min-w-48 py-2 border rounded transition-all duration-300;
+  }
+  
+  .pay-online-button:hover {
+    @apply hover:bg-primary hover:text-white;
+  }
+  
+  .paid-button {
+    @apply bg-[#EAEFFF];
+  }
+  
+  .completed-button {
+    @apply border-green-500 text-green-500;
+  }
+  
+  .cancel-button:hover {
+    @apply hover:bg-red-600 hover:text-white;
+  }
+  
+  .cancelled-button {
+    @apply border-red-500 text-red-500;
+  }
+  
