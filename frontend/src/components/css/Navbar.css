@@ -11,7 +11,7 @@
 }
 
 .navbar-title {
-  @apply text-2xl font-bold text-[#000B6D]; /* HealthBridge title styles */
+  @apply text-2xl font-bold text-[#000B6D]; 
 }
 
 .navbar-menu {
@@ -23,7 +23,7 @@
 }
 
 .navbar-hr {
-  @apply border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden;
+  @apply border-none outline-none h-0.5 bg-[#08377b] w-3/5 m-auto hidden;
 }
 
 .navbar-right {
@@ -55,7 +55,7 @@
 }
 
 .navbar-login-btn {
-  @apply bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block;
+  @apply bg-[#08377b] text-white px-8 py-3 rounded-full font-light hidden md:block;
 }
 
 .menu-icon {

@@ -1,5 +1,5 @@
 .header-container {
-    @apply flex flex-row md:flex-row flex-wrap bg-primary rounded-lg lg:px-20;
+    @apply flex flex-row md:flex-row flex-wrap bg-[#08377b] rounded-lg lg:px-20;
   }
   
   .header-left {
