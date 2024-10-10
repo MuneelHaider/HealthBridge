@@ -7,7 +7,7 @@
 }
 
 .navbar-logo {
-  @apply w-10 h-10 mr-2;
+  @apply h-10 mr-2;
 }
 
 .navbar-title {

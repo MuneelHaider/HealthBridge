@@ -7,7 +7,7 @@
   }
   
   .footer-logo {
-    @apply mb-5 w-40;
+    @apply mb-5 w-96;
   }
   
   .footer-text {

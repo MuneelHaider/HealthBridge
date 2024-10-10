@@ -93,7 +93,7 @@ const Appointment = () => {
           </div>
 
           <p className='doctor-fees'>
-            Appointment fee: <span>${docInfo.fees}</span>
+            Appointment fee: <span>Rs.{docInfo.fees}</span>
           </p>
         </div>
       </div>

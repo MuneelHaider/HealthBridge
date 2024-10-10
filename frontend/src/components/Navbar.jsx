@@ -20,7 +20,6 @@ const Navbar = () => {
       {/* Logo and HealthBridge Title */}
       <div className='navbar-logo-wrapper' onClick={() => navigate('/')}>
         <img className='navbar-logo' src={assets.logo} alt="Logo" />
-        <span className='navbar-title'>HealthBridge</span>
       </div>
 
       <ul className='navbar-menu'>
