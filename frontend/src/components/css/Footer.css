@@ -1,0 +1,28 @@
+.footer-container {
+    @apply md:mx-10;
+  }
+  
+  .footer-content {
+    @apply flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm;
+  }
+  
+  .footer-logo {
+    @apply mb-5 w-40;
+  }
+  
+  .footer-text {
+    @apply w-full md:w-2/3 text-gray-600 leading-6;
+  }
+  
+  .footer-heading {
+    @apply text-xl font-medium mb-5;
+  }
+  
+  .footer-list {
+    @apply flex flex-col gap-2 text-gray-600;
+  }
+  
+  .footer-copyright {
+    @apply py-5 text-sm text-center;
+  }
+  
