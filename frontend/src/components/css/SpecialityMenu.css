@@ -22,3 +22,10 @@
     @apply w-16 sm:w-24 mb-2;
   }
   
+  .top-doctors-button {
+    @apply bg-[#EAEFFF] text-gray-600 px-12 py-3 rounded-full mt-10 hover:scale-105 transition-all;
+  }
+
+  .explore-jobs-button {
+    @apply transition-all duration-500 rounded-full;
+  }

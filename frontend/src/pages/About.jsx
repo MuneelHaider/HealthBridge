@@ -1,6 +1,6 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import './css/About.css'; // Import the CSS file
+import './css/About.css';
 
 const About = () => {
   return (
@@ -15,14 +15,14 @@ const About = () => {
         <img className='about-image' src={assets.about_image} alt="" />
         <div className='about-text'>
           <p>
-            Welcome to Prescripto, your trusted partner in managing your healthcare needs conveniently and efficiently. At Prescripto, we understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
+            Welcome to HealthBridge, your go-to onestop platform which helps you manage your healthcare needs efficiently with the help of AI. HealthBridge uses state of the art AI that helps you not only find recommended doctors according to your problem, but will also help you self-diagnos a problem using HealthBridge's AI Model.
           </p>
           <p>
-            Prescripto is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Prescripto is here to support you every step of the way.
+            Simply upload your scans/files, and see the magic work! HealthBridge is committed to excellence in healthcare technology. We continously strive to enhance our platform, integrating the latest advancements and technologies to improve user experience and product delivery. Whether you are booking your first appointment or using our AI Model, HealthBridge is here to support you every step of the way.
           </p>
           <b className='about-vision-title'>Our Vision</b>
           <p>
-            Our vision at Prescripto is to create a seamless healthcare experience for every user. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
+            Our vision at HealthBridge is to create a seemless onestop platform for every user. We aim to bridge the gap between patients and doctors, making it easier for you to access the type of care you need using latest technologies when you need it.
           </p>
         </div>
       </div>
@@ -40,11 +40,13 @@ const About = () => {
         </div>
         <div className='about-card hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>
           <b>CONVENIENCE: </b>
-          <p>Access to a network of trusted healthcare professionals in your area.</p>
+          <p>Talk to our chatbot which recommendeds you doctors according to your problem.
+          </p>
         </div>
         <div className='about-card hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>
-          <b>PERSONALIZATION:</b>
-          <p>Tailored recommendations and reminders to help you stay on top of your health.</p>
+          <b>AI DIAGNOSTICS ASSISTANCE:</b>
+          <p>Use state of the art AI Model to get yourself an AI-generated Diagnostic Report without the involvement of any doctor.
+          </p>
         </div>
       </div>
     </div>

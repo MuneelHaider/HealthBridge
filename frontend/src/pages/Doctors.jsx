@@ -10,17 +10,15 @@ const Doctors = () => {
   const doctors = [
     {
       _id: '1',
-      name: 'Dr. John Doe',
-      speciality: 'Cardiology',
-      available: true,
-      image: 'path_to_image', // Replace with actual image
+      name: 'Dr. Muneel Haider',
+      speciality: 'Cardiologist',
+      available: true
     },
     {
       _id: '2',
       name: 'Dr. Jane Smith',
       speciality: 'Dermatologist',
-      available: false,
-      image: 'path_to_image',
+      available: false
     },
   ];
 
@@ -52,10 +50,10 @@ const Doctors = () => {
 
         <div className={`filter-list ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
           <p
-            onClick={() => speciality === 'Cardiology' ? navigate('/doctors') : navigate('/doctors/Cardiology')}
-            className={`filter-item ${speciality === 'Cardiology' ? 'bg-[#E2E5FF] text-black' : ''}`}
+            onClick={() => speciality === 'Cardiologist' ? navigate('/doctors') : navigate('/doctors/Cardiologist')}
+            className={`filter-item ${speciality === 'Cardiologist' ? 'bg-[#E2E5FF] text-black' : ''}`}
           >
-            Cardiology
+            Cardiologist
           </p>
           <p
             onClick={() => speciality === 'Dermatologist' ? navigate('/doctors') : navigate('/doctors/Dermatologist')}

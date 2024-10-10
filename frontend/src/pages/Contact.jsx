@@ -1,6 +1,6 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import './css/Contact.css'; // Import the CSS file
+import './css/Contact.css';
 
 const Contact = () => {
   return (
@@ -14,16 +14,11 @@ const Contact = () => {
         <div className='office-details'>
           <p className='office-title'>OUR OFFICE</p>
           <p className='office-address'>
-            54709 Willms Station <br /> Suite 350, Washington, USA
+            AK Brohi Road <br /> FAST NUCES, Islamabad, Pakistan
           </p>
           <p className='office-contact'>
-            Tel: (415) 555-0132 <br /> Email: greatstackdev@gmail.com
+            Tel: (051) 111-7890 <br /> Email: healthbridge@gmail.com
           </p>
-          <p className='careers-title'>CAREERS AT PRESCRIPTO</p>
-          <p className='careers-info'>Learn more about our teams and job openings.</p>
-          <button className='explore-jobs-button'>
-            Explore Jobs
-          </button>
         </div>
       </div>
     </div>

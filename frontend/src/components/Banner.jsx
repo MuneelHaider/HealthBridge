@@ -1,7 +1,7 @@
 import React from 'react';
 import { assets } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
-import './css/Banner.css'; // Tailwind CSS with @apply
+import './css/Banner.css';
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -10,8 +10,7 @@ const Banner = () => {
     <div className='banner-container'>
       <div className='banner-left'>
         <div className='banner-text'>
-          <p>Book Appointment</p>
-          <p className='mt-4'>With 100+ Trusted Doctors</p>
+          <p>Get an automated Diagnostic Report!</p>
         </div>
         <button
           onClick={() => {
@@ -20,10 +19,9 @@ const Banner = () => {
           }}
           className='banner-button'
         >
-          Create account
+          Get Diagnostic Report
         </button>
       </div>
-
       <div className='banner-right'>
         <img
           className='banner-image'

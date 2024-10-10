@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/Verify.css'; // Importing the CSS file
+import './css/Verify.css';
 
 const Verify = () => {
   return (

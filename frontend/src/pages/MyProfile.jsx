@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import './css/MyProfile.css'; // Importing the CSS file
-import { assets } from '../assets/assets'; // Assuming local assets are used
+import './css/MyProfile.css'; 
+import { assets } from '../assets/assets'; 
 
 const MyProfile = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [image, setImage] = useState(false);
 
-  // Simulated user data (Placeholder)
   const [userData, setUserData] = useState({
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '123-456-7890',
+    name: 'Abdullah Zahoor',
+    email: 'abdullah@gmail.com',
+    phone: '+92-308-8828430',
     address: {
-      line1: '123 Street Name',
-      line2: 'City, Country',
+      line1: 'AK Brohi Road',
+      line2: 'H11, Islamabad',
     },
     gender: 'Male',
-    dob: '1990-01-01',
-    image: 'path_to_image', // Replace with actual image
+    dob: '2002-02-23',
   });
 
   return userData ? (

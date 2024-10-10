@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import './css/RelatedDoctors.css'; // Importing the CSS file
+import './css/RelatedDoctors.css';
 
 const RelatedDoctors = ({ speciality, docId }) => {
   const navigate = useNavigate();

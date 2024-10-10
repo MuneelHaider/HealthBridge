@@ -12,19 +12,18 @@ const Appointment = () => {
   const doctors = [
     {
       _id: '1',
-      name: 'Dr. John Doe',
-      speciality: 'Cardiology',
+      name: 'Dr. Muneel Haider',
+      speciality: 'Cardiologist',
       degree: 'MD',
       experience: '10 years',
       fees: 100,
-      image: assets.doctor_image,
+      image: assets.doc1,
       about: 'Experienced Cardiologist with a focus on patient care.',
       available: true,
       slots_booked: {
         '1_1_2024': ['10:30 AM', '11:00 AM'],
       },
     },
-    // You can add more doctor objects for demonstration
   ];
 
   const [docInfo, setDocInfo] = useState(null);
@@ -34,13 +33,11 @@ const Appointment = () => {
 
   const navigate = useNavigate();
 
-  // Simulate fetching doctor info from local data (no API)
   useEffect(() => {
     const docInfo = doctors.find((doc) => doc._id === docId);
     setDocInfo(docInfo);
   }, [docId]);
 
-  // Simulate fetching available slots (no API)
   useEffect(() => {
     if (docInfo) {
       let today = new Date();
@@ -76,7 +73,6 @@ const Appointment = () => {
 
   return docInfo ? (
     <div>
-      {/* ---------- Doctor Details ----------- */}
       <div className='appointment-details'>
         <div>
           <img className='doctor-image' src={docInfo.image} alt="" />
@@ -102,7 +98,6 @@ const Appointment = () => {
         </div>
       </div>
 
-      {/* Booking slots */}
       <div className='booking-slots'>
         <p>Booking slots</p>
         <div className='slot-day-list'>
@@ -125,7 +120,6 @@ const Appointment = () => {
         <button className='book-button'>Book an appointment</button> {/* Button is non-functional */}
       </div>
 
-      {/* Listing Related Doctors */}
       <RelatedDoctors speciality={docInfo.speciality} docId={docId} />
     </div>
   ) : null;

@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import './css/MyAppointments.css'; // Importing the CSS file
-import { assets } from '../assets/assets'; // Assuming you still use local assets
+import './css/MyAppointments.css'; 
+import { assets } from '../assets/assets'; 
 
 const MyAppointments = () => {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Placeholder data to simulate appointments without backend
   const appointments = [
     {
       _id: '1',
       docData: {
-        name: 'Dr. John Doe',
-        speciality: 'Cardiology',
-        image: 'path_to_image', // Replace with actual image
+        name: 'Dr. Muneel Haider',
+        speciality: 'Cardiologist',
         address: {
-          line1: '123 Street Name',
-          line2: 'City, Country',
+          line1: 'AK Brohi Road',
+          line2: 'H11, Islamabad',
         }
       },
       slotDate: '20_01_2024',
@@ -28,7 +26,6 @@ const MyAppointments = () => {
 
   const [payment, setPayment] = useState('');
 
-  // Function to format the date eg. ( 20_01_2000 => 20 Jan 2000 )
   const slotDateFormat = (slotDate) => {
     const dateArray = slotDate.split('_');
     return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2];

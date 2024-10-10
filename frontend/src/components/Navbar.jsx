@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import './css/Navbar.css'; // Import the CSS file
+import './css/Navbar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -17,7 +17,12 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      <img onClick={() => navigate('/')} className='navbar-logo' src={assets.logo} alt="" />
+      {/* Logo and HealthBridge Title */}
+      <div className='navbar-logo-wrapper' onClick={() => navigate('/')}>
+        <img className='navbar-logo' src={assets.logo} alt="Logo" />
+        <span className='navbar-title'>HealthBridge</span>
+      </div>
+
       <ul className='navbar-menu'>
         <NavLink to='/'>
           <li className='navbar-item'>HOME</li>
@@ -39,10 +44,10 @@ const Navbar = () => {
 
       <div className='navbar-right'>
         {token && userData ? (
-          <div className='navbar-user group'> {/* Keep group class in JSX */}
+          <div className='navbar-user group'>
             <img className='user-avatar' src={userData.image} alt="" />
             <img className='dropdown-icon' src={assets.dropdown_icon} alt="" />
-            <div className='user-menu group-hover:block'> {/* Keep group-hover in JSX */}
+            <div className='user-menu group-hover:block'>
               <div className='user-menu-content'>
                 <p onClick={() => navigate('/my-profile')} className='menu-item'>My Profile</p>
                 <p onClick={() => navigate('/my-appointments')} className='menu-item'>My Appointments</p>
