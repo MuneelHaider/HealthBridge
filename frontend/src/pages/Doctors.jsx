@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import './css/Doctors.css'; // Import the CSS file
+import { assets } from '../assets/assets';
+import doc_1 from '../assets/doc14.png';
+import doc_2 from '../assets/zahoor.png';
+import './css/Doctors.css'; 
+import TopDoctors from '../components/TopDoctors';
 
 const Doctors = () => {
   const { speciality } = useParams();
   const navigate = useNavigate();
 
-  // Placeholder data for offline functionality
   const doctors = [
     {
       _id: '1',
       name: 'Dr. Muneel Haider',
       speciality: 'Cardiologist',
-      available: true
+      available: true,
+      image: doc_1
     },
     {
       _id: '2',
-      name: 'Dr. Jane Smith',
+      name: 'Dr. Abdullah',
       speciality: 'Dermatologist',
-      available: false
+      available: false,
+      image: doc_2
     },
   ];
 
@@ -61,7 +66,6 @@ const Doctors = () => {
           >
             Dermatologist
           </p>
-          {/* Add more filters as needed */}
         </div>
 
         <div className='doctor-list'>

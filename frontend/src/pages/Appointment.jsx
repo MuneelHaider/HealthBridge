@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import RelatedDoctors from '../components/RelatedDoctors';
-import './css/Appointment.css'; // Importing the CSS file
+import './css/Appointment.css'; 
+import doc_1 from '../assets/doc14.png';
+import doc_2 from '../assets/zahoor.png';
+
 
 const Appointment = () => {
   const { docId } = useParams();
   const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-  // Placeholder data to simulate the absence of an API/backend
   const doctors = [
     {
       _id: '1',
@@ -17,13 +19,27 @@ const Appointment = () => {
       degree: 'MD',
       experience: '10 years',
       fees: 100,
-      image: assets.doc1,
+      image: doc_1,
       about: 'Experienced Cardiologist with a focus on patient care.',
       available: true,
       slots_booked: {
         '1_1_2024': ['10:30 AM', '11:00 AM'],
       },
     },
+    {
+      _id: '2',
+      name: 'Dr. Abdullah',
+      speciality: 'Dermatologist',
+      degree: 'MD',
+      experience: '10 years',
+      fees: 100,
+      image: doc_2,
+      about: 'Experienced Dermatologist with a focus on patient care.',
+      available: false,
+      slots_booked: {
+        '1_1_2024': ['10:30 AM', '11:00 AM'],
+      },
+    }
   ];
 
   const [docInfo, setDocInfo] = useState(null);

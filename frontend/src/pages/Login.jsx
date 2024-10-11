@@ -7,24 +7,17 @@ const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState(null); 
+
 
   const navigate = useNavigate();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
-    const fakeToken = 'fake-jwt-token';
-    localStorage.setItem('token', fakeToken);
-    setToken(fakeToken);
-    alert(state === 'Sign Up' ? 'Account Created' : 'Logged In');
   };
 
   useEffect(() => {
-    if (token) {
-      navigate('/');
-    }
-  }, [token, navigate]);
+
+  }, [navigate]);
 
   return (
     <form onSubmit={onSubmitHandler} className='login-container'>
