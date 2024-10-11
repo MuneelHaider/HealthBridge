@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { assets } from '../assets/assets';
 import doc_1 from '../assets/doc14.png';
 import doc_2 from '../assets/zahoor.png';
 import './css/Doctors.css'; 
-import TopDoctors from '../components/TopDoctors';
 
 const Doctors = () => {
   const { speciality } = useParams();
