@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
-  const { backendUrl, token, setToken } = useContext(AppContext)
+  const { backendUrl, token, setToken, adminUrl } = useContext(AppContext)
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -31,7 +31,7 @@ const Login = () => {
 
     } else {
 
-      const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+      const { data } = await axios.post(adminUrl + '', { email, password })
 
       if (data.success) {
         localStorage.setItem('token', data.token)
@@ -41,7 +41,6 @@ const Login = () => {
       }
 
     }
-
   }
 
   useEffect(() => {
@@ -75,6 +74,7 @@ const Login = () => {
           ? <p>Already have an account? <span onClick={() => setState('Login')} className='text-primary underline cursor-pointer'>Login here</span></p>
           : <p>Create an new account? <span onClick={() => setState('Sign Up')} className='text-primary underline cursor-pointer'>Sign up here</span></p>
         }
+        <p>Login as a Doctor or Admin? <span onClick={() => window.open(adminUrl, '_blank')} className='text-primary underline cursor-pointer'>Doctor / Admin Login</span></p>
       </div>
     </form>
   )
