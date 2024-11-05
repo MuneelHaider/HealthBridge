@@ -17,7 +17,7 @@ const Header = () => {
           </p>
         </div>
 
-
+        {/* This is where we need to add our links */}
         
         <a href='#speciality' className='header-button'>
           Book appointment <img className='arrow-icon' src={assets.arrow_icon} alt="" />
