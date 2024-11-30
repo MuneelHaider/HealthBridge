@@ -153,7 +153,6 @@ const updateDoctorProfile = async (req, res) => {
 const doctorDashboard = async (req, res) => {
     try {
 
-        
         const { docId } = req.body
 
         const appointments = await appointmentModel.find({ docId })
