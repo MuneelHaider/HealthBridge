@@ -343,6 +343,58 @@ const verifyStripe = async (req, res) => {
 
 }
 
+// API to get all appointments for a patient
+// API to get all appointments for a patient
+const getAllAppointments = async (req, res) => {
+    try {
+        const { userId } = req.body; // Assuming the frontend sends the patient's ID
+
+        // Fetch all appointments where userId matches the patient ID
+        const appointments = await appointmentModel.find({ userId });
+
+        // Format response
+        const formattedAppointments = appointments.map((appointment) => ({
+            type: "appointment",
+            doctorName: appointment.docData?.name || "Unknown Doctor",
+            date: appointment.slotDate,
+            time: appointment.slotTime,
+            notes: appointment.notes || "No notes available",
+            status: appointment.isCompleted ? "Completed" : "Pending",
+        }));
+
+        res.json({ success: true, appointments: formattedAppointments });
+    } catch (error) {
+        console.error("Error fetching patient appointments:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch appointments" });
+    }
+};
+
+// API to get all chat history for a patient
+const getAllChats = async (req, res) => {
+    try {
+        const { userId } = req.body; // Assuming the frontend sends the patient's ID
+
+        // Fetch all chats where userId matches the patient ID
+        const chats = await chatModel.find({ userId }); // Assuming you have a chatModel
+
+        // Format response
+        const formattedChats = chats.map((chat) => ({
+            type: "chat", // Helps with filtering on the frontend
+            doctorName: chat.docData?.name || "Unknown Doctor", // Doctor's name
+            lastMessage: chat.messages[chat.messages.length - 1]?.text || "No messages yet",
+            totalMessages: chat.messages.length,
+            chatId: chat._id, // Useful for viewing full chat later
+        }));
+
+        res.json({ success: true, chats: formattedChats });
+    } catch (error) {
+        console.error("Error fetching patient chats:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch chats" });
+    }
+};
+
+
+
 export {
     loginUser,
     registerUser,
@@ -354,5 +406,7 @@ export {
     paymentRazorpay,
     verifyRazorpay,
     paymentStripe,
-    verifyStripe
+    verifyStripe,
+    getAllAppointments,
+    getAllChats
 }

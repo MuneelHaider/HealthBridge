@@ -18,6 +18,8 @@ import ChatPage from './pages/ChatPage';
 import PortalPage from './pages/PortalPage';
 import PaymentPage from './pages/PaymentPage';
 import ReportPage from './pages/ReportPage';
+import PatientHistoryPage from './pages/PatientHistoryPage';
+
 //hello
 const App = () => {
   return (
@@ -40,6 +42,8 @@ const App = () => {
         <Route path="/portal" element={<PortalPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/report" element={<ReportPage />} />
+        <Route path="/PatientHistoryPage" element={<PatientHistoryPage />} />
+        
         
       </Routes>
       <Footer />
