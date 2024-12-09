@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { IoIosCall } from "react-icons/io";
+import { MdVideoCall } from "react-icons/md";
+
+
 
 const DoctorPatientPage = () => {
   const [selectedAppointment, setSelectedAppointment] = useState(null);
@@ -70,10 +74,14 @@ const DoctorPatientPage = () => {
       {/* Chat Panel */}
       <div className="flex-1 flex flex-col bg-gray-50 w-[100%]">
         {/* Chat Header */}
-        <div className="bg-blue-500 text-white p-4 font-bold text-lg w-[400%]">
+        <div className="bg-blue-500 text-white p-4 font-bold text-lg w-[400%] flex" style={{alignContent: "center"}}>
+        <IoIosCall style={{width: "35px", height:"35px"}}/>
+        <MdVideoCall style={{width: "40px", height:"40px", marginLeft: "10px"}}/>
+            <div className="bsbs" style={{alignContent: "center", marginLeft: "10%"}}>
           {selectedAppointment
             ? `Chat with ${selectedAppointment.patientName}`
             : "Select an appointment to start chatting"}
+        </div>
         </div>
 
         {/* Chat Messages */}
