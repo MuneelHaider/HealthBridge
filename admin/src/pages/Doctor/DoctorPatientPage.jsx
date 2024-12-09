@@ -74,7 +74,7 @@ const DoctorPatientPage = () => {
       {/* Chat Panel */}
       <div className="flex-1 flex flex-col bg-gray-50 w-[100%]">
         {/* Chat Header */}
-        <div className="bg-blue-500 text-white p-4 font-bold text-lg w-[400%] flex" style={{alignContent: "center"}}>
+        <div className="bg-blue-500 text-white p-4 font-bold text-lg w-[402%] flex" style={{alignContent: "center"}}>
         <IoIosCall style={{width: "35px", height:"35px"}}/>
         <MdVideoCall style={{width: "40px", height:"40px", marginLeft: "10px"}}/>
             <div className="bsbs" style={{alignContent: "center", marginLeft: "10%"}}>
@@ -85,7 +85,7 @@ const DoctorPatientPage = () => {
         </div>
 
         {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 w-[245%]">
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 w-[162%]">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -108,7 +108,7 @@ const DoctorPatientPage = () => {
 
         {/* Chat Input */}
         <form
-          className="flex p-4 border-t bg-gray-100 w-[247%]"
+          className="flex p-4 border-t bg-gray-100 w-[163%]"
           onSubmit={handleSendMessage}
         >
           <input
