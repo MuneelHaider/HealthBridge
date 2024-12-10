@@ -27,7 +27,6 @@ const Banner = () => {
           className='banner-image'
           src={assets.appointment_img}
           alt=""
-          style={{paddingTop: "50px"}}
         />
       </div>
     </div>
