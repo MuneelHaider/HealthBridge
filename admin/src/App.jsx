@@ -16,6 +16,7 @@ import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
 import DoctorRegistration from './pages/Doctor/DoctorRegistration';
 import DoctorPatientPage from './pages/Doctor/DoctorPatientPage';
+import VirtualAssistantAI from './pages/Doctor/VirtualAssistantAI_Doctor ';
 
 const App = () => {
   const { dToken } = useContext(DoctorContext);
@@ -39,6 +40,8 @@ const App = () => {
             <Route path="/doctor-appointments" element={<DoctorAppointments />} />
             <Route path="/doctor-profile" element={<DoctorProfile />} />
             <Route path="/doctor/patient/:appointmentId" element={<DoctorPatientPage />} />
+            <Route path='/VirtualAssistantAI_Doctor' element={<VirtualAssistantAI />} />
+
           </Routes>
         </div>
       </div>
