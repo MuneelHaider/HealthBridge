@@ -19,5 +19,5 @@
   }
   
   .banner-image {
-    @apply absolute -bottom-0 right-0 max-w-3xl;
+    @apply absolute -bottom-6 right-0 max-w-3xl mt-5;
   }

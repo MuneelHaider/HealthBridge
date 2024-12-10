@@ -29,7 +29,7 @@ const PatientDoctorPage = () => {
       setMessages((prev) => [
         ...prev,
         { text: message, sender: "patient" },
-        { text: "Sure! Let me know if you have more questions.", sender: "doctor" }, // Hardcoded reply
+        { text: "Hello! I'll respond back as soon as im active.", sender: "doctor" }, 
       ]);
       e.target.reset();
     }
@@ -39,7 +39,7 @@ const PatientDoctorPage = () => {
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files).map((file) => ({
       name: file.name,
-      url: URL.createObjectURL(file), // Generate a temporary URL for the file
+      url: URL.createObjectURL(file), 
     }));
     setFileList((prev) => [...prev, ...files]);
   };

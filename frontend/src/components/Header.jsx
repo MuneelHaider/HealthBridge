@@ -1,8 +1,11 @@
 import React from 'react';
 import { assets } from '../assets/assets';
+import { useNavigate } from 'react-router-dom';
 import './css/Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='header-container'>
       <div className='header-left'>
@@ -17,17 +20,25 @@ const Header = () => {
           </p>
         </div>
 
-        {/* This is where we need to add our links */}
-        
-        <a href='#speciality' className='header-button'>
-          Book appointment <img className='arrow-icon' src={assets.arrow_icon} alt="" />
-        </a>
-        <a href='#speciality' className='header-button'>
+        {/* Updated links with navigation */}
+        <button
+          onClick={() => navigate('/doctors')}
+          className='header-button'
+        >
+          Book Appointment <img className='arrow-icon' src={assets.arrow_icon} alt="" />
+        </button>
+        <button
+          onClick={() => navigate('/VirtualAssistantAI')}
+          className='header-button'
+        >
           AI Diagnostics <img className='arrow-icon' src={assets.arrow_icon} alt="" />
-        </a>
-        <a href='#speciality' className='header-button'>
+        </button>
+        <button
+          onClick={() => navigate('/VirtualAssistantAI')}
+          className='header-button'
+        >
           Find Recommended Doctors <img className='arrow-icon' src={assets.arrow_icon} alt="" />
-        </a>
+        </button>
       </div>
 
       <div className='header-right'>

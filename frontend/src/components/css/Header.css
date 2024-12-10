@@ -3,7 +3,7 @@
   }
   
   .header-left {
-    @apply md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[10vw] md:mb-[-30px];
+    @apply md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[6vw] md:mb-[-30px];
   }
   
   .header-text {
@@ -23,11 +23,11 @@
   }
   
   .header-right {
-    @apply md:w-1/2 relative;
+    @apply w-1/2 relative;
   }
   
   .header-right-image {
-    @apply md:absolute bottom-20 h-auto rounded-lg;
+    @apply mt-16 h-auto rounded-lg;
   }
   
   .arrow-icon {

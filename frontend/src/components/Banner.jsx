@@ -14,7 +14,7 @@ const Banner = () => {
         </div>
         <button
           onClick={() => {
-            navigate('/login');
+            navigate('/VirtualAssistantAI');
             scrollTo(0, 0);
           }}
           className='banner-button'
@@ -27,6 +27,7 @@ const Banner = () => {
           className='banner-image'
           src={assets.appointment_img}
           alt=""
+          style={{paddingTop: "50px"}}
         />
       </div>
     </div>
