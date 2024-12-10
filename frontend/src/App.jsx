@@ -19,6 +19,7 @@ import PortalPage from './pages/PortalPage';
 import PaymentPage from './pages/PaymentPage';
 import ReportPage from './pages/ReportPage';
 import PatientHistoryPage from './pages/PatientHistoryPage';
+import PatientDoctorPage from './pages/PatientDoctorPage';
 
 //hello
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/report" element={<ReportPage />} />
         <Route path="/PatientHistoryPage" element={<PatientHistoryPage />} />
+        <Route path="/patient/doctor/:appointmentId" element={<PatientDoctorPage />} />
         
         
       </Routes>
