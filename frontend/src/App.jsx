@@ -20,6 +20,7 @@ import PaymentPage from './pages/PaymentPage';
 import ReportPage from './pages/ReportPage';
 import PatientHistoryPage from './pages/PatientHistoryPage';
 import PatientDoctorPage from './pages/PatientDoctorPage';
+import VirtualAssistantAI from './pages/VirtualAssistantAI';
 
 //hello
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/report" element={<ReportPage />} />
         <Route path="/PatientHistoryPage" element={<PatientHistoryPage />} />
         <Route path="/patient/doctor/:appointmentId" element={<PatientDoctorPage />} />
+        <Route path='/VirtualAssistantAI' element={<VirtualAssistantAI />} />
         
         
       </Routes>

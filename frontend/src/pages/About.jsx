@@ -40,7 +40,7 @@ const About = () => {
         </div>
         <div className='about-card hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>
           <b>CONVENIENCE: </b>
-          <p>Talk to our chatbot which recommendeds you doctors according to your problem.
+          <p>Talk to our VirtualAssistant which recommendeds you doctors according to your problem.
           </p>
         </div>
         <div className='about-card hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>
