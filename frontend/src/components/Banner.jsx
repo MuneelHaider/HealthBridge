@@ -14,7 +14,7 @@ const Banner = () => {
         </div>
         <button
           onClick={() => {
-            navigate('/login');
+            navigate('/VirtualAssistantAI');
             scrollTo(0, 0);
           }}
           className='banner-button'
