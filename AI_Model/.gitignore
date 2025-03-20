@@ -3,3 +3,5 @@
 /Scripts/train_images
 /Scripts/train_masks
 /Scripts/models
+/new_scripts/model.h5
+/new_scripts/model.keras
