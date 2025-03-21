@@ -33,7 +33,11 @@ const Navbar = () => {
           <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to='/VirtualAssistantAI' >
-          <li className='py-1'>VIRTUAL ASSISTANT / AI</li>
+          <li className='py-1'>VIRTUAL ASSISTANT</li>
+          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+        </NavLink>
+        <NavLink to='/ai-diagnosis' >
+          <li className='py-1'>AI DIAGNOSIS</li>
           <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
         <NavLink to='/about' >
@@ -44,6 +48,7 @@ const Navbar = () => {
           <li className='py-1'>CONTACT</li>
           <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
         </NavLink>
+       
       </ul>
 
       <div className='flex items-center gap-4 '>
@@ -60,7 +65,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            : <button onClick={() => navigate('/login')} className='bg-[#08377b] text-white px-8 py-3 rounded-full font-light hidden md:block'>Signup / Sign in</button>
+            : <button onClick={() => navigate('/login')} className='bg-[#08377b] text-white px-8 py-3 rounded-full font-light hidden md:block'>Sign Up / Login</button>
         }
         <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
 
