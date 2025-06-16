@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
+import validator from "validator";
+import { v2 as cloudinary } from "cloudinary";
 
 // API for doctor Login 
 const loginDoctor = async (req, res) => {
@@ -30,6 +32,68 @@ const loginDoctor = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
+
+const registerDoctor = async (req, res) => {
+  try {
+    const { name, email, password, speciality, degree, experience, about, fees, address } = req.body;
+    const imageFile = req.file;
+
+    // Basic validations
+    if (!name || !email || !password || !speciality || !degree || !experience || !about || !fees || !address) {
+      return res.json({ success: false, message: "Missing Details" });
+    }
+
+    if (!validator.isEmail(email)) {
+      return res.json({ success: false, message: "Invalid email format" });
+    }
+
+    if (password.length < 8) {
+      return res.json({ success: false, message: "Password must be at least 8 characters" });
+    }
+
+    // Check if doctor already exists
+    const existingDoctor = await doctorModel.findOne({ email });
+    if (existingDoctor) {
+      return res.json({ success: false, message: "Doctor already registered with this email" });
+    }
+
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Upload profile image
+    let imageUrl = '';
+    if (imageFile) {
+      const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" });
+      imageUrl = imageUpload.secure_url;
+    } else {
+      imageUrl = "https://res.cloudinary.com/demo/image/upload/v1699999999/default-doctor.png"; // fallback image
+    }
+
+    // Create doctor
+    const newDoctor = new doctorModel({
+      name,
+      email,
+      image: imageUrl,
+      password: hashedPassword,
+      speciality,
+      degree,
+      experience,
+      about,
+      fees,
+      address: JSON.parse(address),
+      date: Date.now(),
+      approved: false // you can add a flag if you want to manually approve
+    });
+
+    await newDoctor.save();
+    res.json({ success: true, message: "Doctor registration submitted for approval." });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
 
 // API to get doctor appointments for doctor panel
 const appointmentsDoctor = async (req, res) => {
@@ -192,6 +256,7 @@ const doctorDashboard = async (req, res) => {
 
 export {
     loginDoctor,
+    registerDoctor,
     appointmentsDoctor,
     appointmentCancel,
     doctorList,

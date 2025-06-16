@@ -1,9 +1,11 @@
 import express from 'express';
-import { loginDoctor, appointmentsDoctor, appointmentCancel, doctorList, changeAvailablity, appointmentComplete, doctorDashboard, doctorProfile, updateDoctorProfile } from '../controllers/doctorController.js';
+import { loginDoctor, registerDoctor, appointmentsDoctor, appointmentCancel, doctorList, changeAvailablity, appointmentComplete, doctorDashboard, doctorProfile, updateDoctorProfile } from '../controllers/doctorController.js';
 import authDoctor from '../middleware/authDoctor.js';
+import upload from '../middleware/multer.js';
 const doctorRouter = express.Router();
 
 doctorRouter.post("/login", loginDoctor)
+doctorRouter.post("/register", upload.single('image'), registerDoctor)
 doctorRouter.post("/cancel-appointment", authDoctor, appointmentCancel)
 doctorRouter.get("/appointments", authDoctor, appointmentsDoctor)
 doctorRouter.get("/list", doctorList)

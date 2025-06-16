@@ -1,0 +1,40 @@
+.contact-title {
+    @apply text-center text-2xl pt-10 text-[#707070];
+  }
+  
+  .contact-title-highlight {
+    @apply text-gray-700 font-semibold;
+  }
+  
+  .contact-details {
+    @apply my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 text-sm;
+  }
+  
+  .contact-image {
+    @apply w-full md:max-w-[360px];
+  }
+  
+  .office-details {
+    @apply flex flex-col justify-center items-start gap-6;
+  }
+  
+  .office-title {
+    @apply font-semibold text-lg text-gray-600;
+  }
+  
+  .office-address, .office-contact {
+    @apply text-gray-500;
+  }
+  
+  .careers-title {
+    @apply font-semibold text-lg text-gray-600;
+  }
+  
+  .careers-info {
+    @apply text-gray-500;
+  }
+  
+  .explore-jobs-button {
+    @apply border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500;
+  }
+  

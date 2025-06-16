@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { DoctorContext } from './context/DoctorContext';
 import { AdminContext } from './context/AdminContext';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Admin/Dashboard';
 import AllAppointments from './pages/Admin/AllAppointments';
 import AddDoctor from './pages/Admin/AddDoctor';
@@ -14,36 +14,50 @@ import Login from './pages/Login';
 import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
+import DoctorRegistration from './pages/Doctor/DoctorRegistration';
+import DoctorPatientPage from './pages/Doctor/DoctorPatientPage';
+import VirtualAssistantAI from './pages/Doctor/VirtualAssistantAI_Doctor ';
 
 const App = () => {
+  const { dToken } = useContext(DoctorContext);
+  const { aToken } = useContext(AdminContext);
 
-  const { dToken } = useContext(DoctorContext)
-  const { aToken } = useContext(AdminContext)
+  if (dToken || aToken) {
+    // Logged-in state
+    return (
+      <div className="bg-[#F8F9FD]">
+        <ToastContainer />
+        <Navbar />
+        <div className="flex items-start">
+          <Sidebar />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/admin-dashboard" element={<Dashboard />} />
+            <Route path="/all-appointments" element={<AllAppointments />} />
+            <Route path="/add-doctor" element={<AddDoctor />} />
+            <Route path="/doctor-list" element={<DoctorsList />} />
+            <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="/doctor-appointments" element={<DoctorAppointments />} />
+            <Route path="/doctor-profile" element={<DoctorProfile />} />
+            <Route path="/doctor/patient/:appointmentId" element={<DoctorPatientPage />} />
+            <Route path='/VirtualAssistantAI_Doctor' element={<VirtualAssistantAI />} />
 
-  return dToken || aToken ? (
-    <div className='bg-[#F8F9FD]'>
-      <ToastContainer />
-      <Navbar />
-      <div className='flex items-start'>
-        <Sidebar />
-        <Routes>
-          <Route path='/' element={<></>} />
-          <Route path='/admin-dashboard' element={<Dashboard />} />
-          <Route path='/all-appointments' element={<AllAppointments />} />
-          <Route path='/add-doctor' element={<AddDoctor />} />
-          <Route path='/doctor-list' element={<DoctorsList />} />
-          <Route path='/doctor-dashboard' element={<DoctorDashboard />} />
-          <Route path='/doctor-appointments' element={<DoctorAppointments />} />
-          <Route path='/doctor-profile' element={<DoctorProfile />} />
-        </Routes>
+          </Routes>
+        </div>
       </div>
-    </div>
-  ) : (
+    );
+  }
+
+  // Logged-out state (no token)
+  return (
     <>
       <ToastContainer />
-      <Login />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/doctor-registration" element={<DoctorRegistration />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

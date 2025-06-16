@@ -1,0 +1,28 @@
+.login-container {
+    @apply min-h-[80vh] flex items-center;
+  }
+  
+  .login-form {
+    @apply flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg;
+  }
+  
+  .login-title {
+    @apply text-2xl font-semibold;
+  }
+  
+  .input-wrapper {
+    @apply w-full;
+  }
+  
+  .input-field {
+    @apply border border-[#DADADA] rounded w-full p-2 mt-1;
+  }
+  
+  .submit-button {
+    @apply bg-[#08377b] text-white w-full py-2 my-2 rounded-md text-base;
+  }
+  
+  .toggle-auth {
+    @apply text-primary underline cursor-pointer;
+  }
+  
