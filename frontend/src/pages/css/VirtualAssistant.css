@@ -1,6 +1,5 @@
 /*******************************************************/
-/* Outer container: holds either model+buttons or the  */
-/* unified sidebar+chat layout once user picks VA      */
+/* Outer container                                     */
 /*******************************************************/
 .unified-container {
   width: 100%;
@@ -10,10 +9,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 }
 
 /*******************************************************/
-/* Initial step: model + big buttons (no sidebar)      */
+/* Model + Choice Buttons Layout (Unused Post-Start)   */
 /*******************************************************/
 .model-and-buttons {
   display: flex;
@@ -30,7 +30,9 @@
 .choice-row {
   margin-top: -2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
 .choice-btn {
@@ -42,7 +44,7 @@
   border-radius: 8px;
   box-shadow: 0 0 12px #00ffa680;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .choice-btn:hover {
@@ -50,22 +52,21 @@
 }
 
 /*******************************************************/
-/* Once user chooses VA => .assistant-wrapper with     */
-/* sidebar on left + chat box on right in one panel    */
+/* Unified Assistant View (Sidebar + Chat Box)         */
 /*******************************************************/
 .assistant-wrapper {
   margin: 2rem auto;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
-  min-height: 600px;
   display: flex;
+  flex-direction: row;
   border: 2px solid #00ffa6;
   border-radius: 12px;
   box-shadow: 0 0 20px #00ffa666, 0 0 40px #00ffa633 inset;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Sidebar on the left */
+/* Sidebar */
 .assistant-sidebar {
   width: 300px;
   background: #0b192e;
@@ -125,9 +126,7 @@
   background: #00f7ff55;
 }
 
-/*******************************************************/
-/* Chat box on the right                               */
-/*******************************************************/
+/* Chat Box */
 .assistant-chat-box {
   flex: 1;
   display: flex;
@@ -142,11 +141,10 @@
   margin-bottom: 1rem;
 }
 
-/* messages-area => fixed internal scroll */
 .messages-area {
-  height: 400px; /* ✅ فکس ہائٹ رکھ دی */
+  height: 400px;
   overflow-y: auto;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid #00ffa644;
   border-radius: 8px;
   padding: 1rem;
@@ -155,7 +153,6 @@
   flex-direction: column;
 }
 
-/* Bubbles */
 .bubble {
   max-width: 80%;
   margin: 0.5rem 0;
@@ -181,7 +178,6 @@
   color: #fff;
 }
 
-/* Options row => if message.type === 'options' */
 .options-row {
   display: flex;
   flex-wrap: wrap;
@@ -203,7 +199,6 @@
   background: #bbb;
 }
 
-/* Pending files if not sent yet */
 .pending-files {
   background: #333;
   margin-top: 0.5rem;
@@ -219,7 +214,6 @@
   color: #fff;
 }
 
-/* Input row pinned at bottom of chat box */
 .chat-input-row {
   display: flex;
   gap: 1rem;
@@ -263,4 +257,54 @@
 
 .send-btn:hover {
   box-shadow: 0 0 20px #00ffa6aa;
+}
+
+/*******************************************************/
+/* MOBILE RESPONSIVENESS — ≤768px                      */
+/*******************************************************/
+@media (max-width: 768px) {
+  .assistant-wrapper {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .assistant-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #00ffa6;
+  }
+
+  .assistant-chat-box {
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  .chat-header {
+    font-size: 1.1rem;
+  }
+
+  .messages-area {
+    height: 60vh;
+    padding: 0.8rem;
+  }
+
+  .option-btn {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .chat-input-row {
+    flex-direction: column;
+  }
+
+  .chat-input-row input[type="text"] {
+    width: 100%;
+  }
+
+  .send-btn {
+    width: 100%;
+  }
 }

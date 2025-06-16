@@ -1,0 +1,36 @@
+.header-container {
+    @apply flex flex-row md:flex-row flex-wrap bg-[#08377b] rounded-lg lg:px-20;
+  }
+  
+  .header-left {
+    @apply md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 m-auto md:py-[6vw] md:mb-[-30px];
+  }
+  
+  .header-text {
+    @apply text-3xl md:text-4xl lg:text-5xl text-white font-semibold leading-tight md:leading-tight lg:leading-tight;
+  }
+  
+  .header-description {
+    @apply flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light;
+  }
+  
+  .header-image {
+    @apply w-32;
+  }
+  
+  .header-button {
+    @apply flex items-center gap-2 bg-white px-8 py-3 rounded-full text-[#595959] text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300;
+  }
+  
+  .header-right {
+    @apply w-1/2 relative;
+  }
+  
+  .header-right-image {
+    @apply mt-16 h-auto rounded-lg;
+  }
+  
+  .arrow-icon {
+    @apply w-3;
+  }
+  

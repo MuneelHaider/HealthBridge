@@ -123,7 +123,7 @@ const MyAppointments = () => {
 
               {!item.cancelled && (
                 <button
-                  onClick={() => navigate(`/patient/doctor/${item._id}`)}
+                  onClick={() => navigate(`/patient/chat/`)}
                   className="text-[#696969] sm:min-w-48 py-2 border rounded hover:bg-blue-600 hover:text-white transition-all duration-300"
                 >
                   View Portal

@@ -46,7 +46,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to={'/VirtualAssistantAI_Doctor'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#08377b]' : ''}`}>
           <img className='min-w-5' src={assets.people_icon} alt='' />
-          <p className='hidden md:block'>AI Assistant</p>
+          <p className='hidden md:block'>AI Diagnosis</p>
         </NavLink>
       </ul>}
     </div>

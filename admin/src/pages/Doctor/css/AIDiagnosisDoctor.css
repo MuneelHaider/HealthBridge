@@ -1,0 +1,230 @@
+.ai-diagnosis-container {
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  input {
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  
+  .loading {
+    color: orange;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .result {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+  }
+  
+  
+  /* Container with flex row for side by side */
+.ai-container {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; or center, adjust if needed */
+    /*justify-content: center;*/ 
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    /* Set a background color or gradient if you want */
+    background: rgba(192, 192, 192, 0.4);   
+     
+  }
+  
+  /* Left side: 3D model container */
+  .ai-3d-container {
+    width: 400px;  /* Adjust for your 3D model's desired size */
+    height: 400px;
+    margin-right: 13rem; /* space between model & panel */
+    /* position: relative; // Not strictly needed if you don't do absolute children */
+  }
+  
+  /* Right side: Neon panel for AI diagnosis */
+  /************************************************************/
+/* Futuristic Panel (Glassmorphism + Neon)                  */
+/************************************************************/
+
+/* The container that holds your panel. 
+   We'll keep it simple so the panel stands out.
+*/
+.ai-ui {
+    /* Remove or reduce max-height if you have one */
+    /* Remove large padding if you had it. Keep a moderate padding for neatness */
+    padding: 16px;
+    max-width: 350px;
+    /* Let the height be driven by content only */
+    height: auto;
+    /* The rest of your futuristic styling here */
+    background: rgba(15, 19, 26, 0.4);
+    backdrop-filter: blur(10px);
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00fdfd80, 0 0 60px #00fdfd40 inset;
+    color: #ccf;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  
+  /* Headings with neon color */
+  .ai-ui h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #00ffd9; /* Vibrant neon turquoise */
+    text-shadow: 0 0 4px #00ffd9cc;
+  }
+  
+  /* Sub text styling */
+  .ai-ui p {
+    margin-bottom: 12px;
+    color: #cceeff; /* Slightly lighter */
+  }
+  
+  /************************************************************/
+  /* File Upload Section                                      */
+  /************************************************************/
+  
+  .ai-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  /* FILE INPUT */
+  .ai-upload input[type="file"] {
+    background: #0b0e13;
+    border: 1px solid #0ff;
+    color: #0ff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .ai-upload input[type="file"]:hover {
+    background: #141921;
+    box-shadow: 0 0 8px #00fdfd80;
+  }
+  
+  /* BUTTON STYLES (Upload & Diagnose) */
+  .ai-upload button {
+    background: linear-gradient(135deg, #00fdfa, #00ffa6);
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #00fdfd80;
+  }
+  
+  .ai-upload button:hover {
+    box-shadow: 0 0 20px #00ffa680;
+    background: linear-gradient(135deg, #00ffa6, #00fdfa);
+  }
+  
+  /************************************************************/
+  /* Loading / Error Messages                                */
+  /************************************************************/
+  
+  .ai-loading {
+    color: #ffd900; /* Vibrant yellow */
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .ai-error {
+    color: #ff6464; /* Vibrant pinkish-red */
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  /************************************************************/
+  /* AI Diagnosis Result Box                                 */
+  /************************************************************/
+  
+  .ai-result {
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid #0ff;
+    border-radius: 10px;
+    background: rgba(15, 19, 26, 0.3);
+    box-shadow: inset 0 0 8px #00fdfd80;
+    color: #ccf;
+  }
+  
+  /* Download link for the report */
+  .ai-report {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 10px;
+    color: #000;
+    background: #0ff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  .ai-report:hover {
+    background: #00d0d0;
+    box-shadow: 0 0 10px #0ff8;
+  }
+  
+  .ai-form {
+  margin-left: 4rem;
+  padding: 20px;
+  min-width: 300px;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: fit-content;
+}
+
+.ai-form h2 {
+  color: green;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.ai-form input {
+  padding: 10px;
+  border: 1px solid #00fdfa;
+  border-radius: 6px;
+  background: white;
+  color: black
+}

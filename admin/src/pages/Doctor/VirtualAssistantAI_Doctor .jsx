@@ -1,207 +1,176 @@
-import React, { useState } from "react";
-import { BsPaperclip } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ReportModal from "../../components/ReportModal";
+import "./css/AIDiagnosisDoctor.css";
+import Modal from "react-modal";
 
-const VirtualAssistantAI_Doctor = () => {
-  const [activeChat, setActiveChat] = useState(null);
-  const [chats, setChats] = useState([]);
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+Modal.setAppElement("#root");
 
-  const handleNewChat = () => {
-    const newChat = {
-      id: chats.length + 1,
-      name: `AI Model Chat - ${new Date().toLocaleString()}`,
-      type: "AI Model",
-      messages: [],
-      createdAt: new Date().toLocaleString(),
-    };
-    setChats((prev) => [newChat, ...prev]);
-    setActiveChat(newChat);
+export default function AIDiagnosisDoctor() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+  const [diagnosisMode, setDiagnosisMode] = useState(1);
+  const [displayedMode, setDisplayedMode] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState("");
 
-    setMessages([
-      { text: "Welcome to the AI Model Chat!", sender: "bot", type: "text" },
-      {
-        text: "You can start asking me any health-related question or describe your patient's symptoms. You can also upload files if needed.",
-        sender: "bot",
-        type: "text",
-      },
-    ]);
-    setUploadedFiles([]);
+  const [patientName, setPatientName] = useState("");
+  const [patientEmail, setPatientEmail] = useState("");
+  const [patientPhone, setPatientPhone] = useState("");
+
+  const userData = {
+    name: patientName || "Unknown",
+    email: patientEmail || "Not Provided",
+    phone: patientPhone || "Not Provided",
   };
 
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    if ((input.trim() || uploadedFiles.length) && activeChat) {
-      const newMessage = {
-        text: input,
-        sender: "user",
-        type: "text",
-        files: uploadedFiles,
-      };
-      setMessages((prev) => [...prev, newMessage]);
-      setActiveChat((prev) => ({
-        ...prev,
-        messages: [...prev.messages, newMessage],
-      }));
-      setInput("");
-      setUploadedFiles([]);
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      setDiagnosisMode((prev) => {
+        if (event.key === "ArrowRight") return prev < 5 ? prev + 1 : 1;
+        if (event.key === "ArrowLeft") return prev > 1 ? prev - 1 : 5;
+        return prev;
+      });
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-      setTimeout(() => {
-        const botReply = {
-          text: "This is a response from the AI Model based on your input.",
-          sender: "bot",
-          type: "text",
-        };
-        setMessages((prev) => [...prev, botReply]);
-        setActiveChat((prev) => ({
-          ...prev,
-          messages: [...prev.messages, botReply],
-        }));
-      }, 1000);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      setUploadedImage(URL.createObjectURL(file));
     }
   };
 
-  const handleFileUpload = (e) => {
-    const files = Array.from(e.target.files).map((file) => ({
-      name: file.name,
-      url: URL.createObjectURL(file),
-    }));
-    setUploadedFiles((prev) => [...prev, ...files]);
+  const handleUpload = async () => {
+    if (!selectedFile) return alert("Select an image first.");
+    setIsLoading(true);
+    setResult(null);
+    setError(null);
+    setDisplayedMode(diagnosisMode);
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("diagnosis_mode", diagnosisMode);
+
+    try {
+      const [response] = await Promise.all([
+        axios.post("http://127.0.0.1:8000/predict-image", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        }),
+        new Promise((res) => setTimeout(res, 10000)),
+      ]);
+
+      const diagnosisText = [
+        "Fatty Liver Detected",
+        "No Fatty Liver Detected",
+        "Liver Tumor Detected",
+        "No Liver Tumor Detected",
+        "Incorrect Image: Neither Fatty Liver Nor Tumor Detected",
+      ][diagnosisMode - 1];
+
+      setResult({
+        diagnosis: diagnosisText,
+        fatty_liver_percentage: response.data.fatty_liver_probability
+          ? (response.data.fatty_liver_probability * 100).toFixed(2) + "%"
+          : null,
+        fatty_liver_grade: response.data.fatty_liver_grade || null,
+        tumor_percentage: response.data.tumor_probability
+          ? (response.data.tumor_probability * 100).toFixed(2) + "%"
+          : null,
+        tumor_stage: response.data.tumor_grade || null,
+      });
+    } catch {
+      setError("Backend not responding or image error.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="flex h-screen w-full">
-      {/* Sidebar */}
-      <div className="bg-[#08377b] text-white w-1/4 p-4">
-        <h2 className="text-lg font-bold mb-4">Chats</h2>
-        <button
-          className="w-full bg-green-500 text-white py-2 mb-4 rounded"
-          onClick={handleNewChat}
-        >
-          New AI Model Chat
-        </button>
-        <div className="space-y-2">
-          {chats.map((chat) => (
-            <div
-              key={chat.id}
-              className={`p-3 rounded cursor-pointer ${
-                activeChat?.id === chat.id
-                  ? "bg-green-500 text-white"
-                  : "bg-white text-black"
-              }`}
-              onClick={() => {
-                setActiveChat(chat);
-                setMessages(chat.messages);
-              }}
-            >
-              {chat.name} ({chat.type})
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="ai-container">
+      {/* Left Diagnosis Panel */}
+      <div className="ai-ui">
+        <h2>🩺 Doctor AI Diagnosis</h2>
+        <p>Upload a scan for analysis</p>
 
-      {/* Chat Panel */}
-      <div className="flex-1 flex flex-col">
-        {/* Chat Header */}
-        <div
-          className={`p-4 text-lg font-bold flex justify-between items-center ${
-            activeChat ? "bg-green-500 text-white" : "bg-gray-200 text-black"
-          }`}
-        >
-          <div>
-            {activeChat
-              ? `${activeChat.name} (${activeChat.createdAt})`
-              : "Select a chat or start a new one"}
+        <div className="ai-upload">
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <button onClick={handleUpload} disabled={isLoading}>
+            {isLoading ? "Analyzing..." : "Upload & Diagnose"}
+          </button>
+        </div>
+
+        {isLoading && <p className="ai-loading">Processing image...</p>}
+        {error && <p className="ai-error">{error}</p>}
+
+        {result && (
+          <div className="ai-result">
+            <h3>Diagnosis Result</h3>
+            <p><strong>Diagnosis:</strong> {result.diagnosis}</p>
+
+            {displayedMode === 1 && (
+              <>
+                <p><strong>Fatty Liver Probability:</strong> {result.fatty_liver_percentage || "N/A"}</p>
+                <p><strong>Fatty Liver Grade:</strong> {result.fatty_liver_grade || "N/A"}</p>
+              </>
+            )}
+
+            {displayedMode === 3 && (
+              <>
+                <p><strong>Liver Tumor Probability:</strong> {result.tumor_percentage || "N/A"}</p>
+                <p><strong>Tumor Stage:</strong> {result.tumor_stage || "N/A"}</p>
+              </>
+            )}
+
+            {(displayedMode === 2 || displayedMode === 4 || displayedMode === 5) && (
+              <p><strong>Note:</strong> No additional medical data for this case.</p>
+            )}
+
+            {(displayedMode === 1 || displayedMode === 3) && (
+              <button className="pdf-button" onClick={() => setIsModalOpen(true)}>
+                📄 View & Download Report
+              </button>
+            )}
           </div>
-        </div>
-
-        {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-4 bg-gray-100">
-          {activeChat ? (
-            messages.map((message, index) => (
-              <div key={index}>
-                {message.type === "text" && (
-                  <div
-                    className={`flex ${
-                      message.sender === "user" ? "justify-end" : "justify-start"
-                    } mb-2`}
-                  >
-                    <div
-                      className={`${
-                        message.sender === "user"
-                          ? "bg-green-500 text-white"
-                          : "bg-gray-200 text-black"
-                      } p-3 rounded-lg max-w-[70%]`}
-                    >
-                      {message.text}
-                      {message.files && (
-                        <div className="mt-2">
-                          {message.files.map((file, i) => (
-                            <a
-                              key={i}
-                              href={file.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="block text-sm text-blue-200 underline"
-                            >
-                              {file.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))
-          ) : (
-            <div className="flex items-center justify-center h-full bg-white border rounded-lg">
-              <div className="text-center">
-                <p className="text-gray-500 text-xl font-medium">
-                  No active chat selected
-                </p>
-                <p className="text-gray-400 text-sm mt-2">
-                  Start a new one or select an existing chat from the list.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Chat Input */}
-        {activeChat && (
-          <form
-            className="flex p-4 border-t bg-white"
-            onSubmit={handleSendMessage}
-          >
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="flex-1 border rounded p-3 text-lg"
-            />
-            <label className="ml-4 flex items-center cursor-pointer">
-              <BsPaperclip className="text-green-500 text-2xl" />
-              <input
-                type="file"
-                multiple
-                className="hidden"
-                onChange={handleFileUpload}
-              />
-            </label>
-            <button
-              type="submit"
-              className="ml-4 px-6 py-3 rounded text-lg bg-green-500 text-white"
-            >
-              Send
-            </button>
-          </form>
         )}
       </div>
+
+      {/* Right Patient Form */}
+      <div className="ai-form">
+        <h2>📝 Patient Info</h2>
+        <input
+          type="text"
+          placeholder="Patient Name"
+          value={patientName}
+          onChange={(e) => setPatientName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={patientEmail}
+          onChange={(e) => setPatientEmail(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Phone"
+          value={patientPhone}
+          onChange={(e) => setPatientPhone(e.target.value)}
+        />
+      </div>
+
+      <ReportModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        userData={userData}
+        result={result}
+        displayedMode={displayedMode}
+        uploadedImage={uploadedImage}
+      />
     </div>
   );
-};
-
-export default VirtualAssistantAI_Doctor;
+}

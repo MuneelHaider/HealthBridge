@@ -1,15 +1,18 @@
 import express from "express";
 import {
-    loginUser,
-    registerUser,
-    getProfile,
-    updateProfile,
-    bookAppointment,
-    listAppointment,
-    cancelAppointment,
-    getAllAppointments,
-    getAllChats,
+  loginUser,
+  registerUser,
+  getProfile,
+  updateProfile,
+  bookAppointment,
+  listAppointment,
+  cancelAppointment,
+  getAllAppointments,
+  getAllChats,
+  sendMessage,
+  getChatByAppointment,
 } from "../controllers/userController.js";
+
 import upload from "../middleware/multer.js";
 import authUser from "../middleware/authUser.js";
 
@@ -23,12 +26,11 @@ userRouter.post("/update-profile", upload.single("image"), authUser, updateProfi
 userRouter.post("/book-appointment", authUser, bookAppointment);
 userRouter.get("/appointments", authUser, listAppointment);
 userRouter.post("/cancel-appointment", authUser, cancelAppointment);
-
-// Route to get all appointments for a patient
 userRouter.post("/all-appointments", authUser, getAllAppointments);
-
-
-// Route to get all chats for a patient
 userRouter.post("/all-chats", authUser, getAllChats);
+
+// 💬 Chat Endpoints
+userRouter.post("/chat/send", authUser, sendMessage);
+userRouter.post("/chat/fetch", authUser, getChatByAppointment);
 
 export default userRouter;
