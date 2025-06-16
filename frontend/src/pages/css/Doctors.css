@@ -1,0 +1,52 @@
+.doctor-intro-text {
+    @apply text-gray-600;
+  }
+  
+  .doctor-grid {
+    @apply flex flex-col sm:flex-row items-start gap-5 mt-5;
+  }
+  
+  .filter-button {
+    @apply py-1 px-3 border rounded text-sm transition-all sm:hidden;
+  }
+  
+  .filter-list {
+    @apply flex-col gap-4 text-sm text-gray-600;
+  }
+  
+  .filter-item {
+    @apply w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer;
+  }
+  
+  .doctor-list {
+    @apply w-full grid grid-cols-auto gap-4 gap-y-6;
+  }
+  
+  .doctor-card {
+    @apply border border-[#C9D8FF] rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500;
+  }
+  
+  .doctor-image {
+    @apply bg-[#EAEFFF];
+  }
+  
+  .doctor-info {
+    @apply p-4;
+  }
+  
+  .availability {
+    @apply flex items-center gap-2 text-sm text-center;
+  }
+  
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .doctor-name {
+    @apply text-[#262626] text-lg font-medium;
+  }
+  
+  .doctor-speciality {
+    @apply text-[#5C5C5C] text-sm;
+  }
+  

@@ -21,3 +21,17 @@
 ::-webkit-scrollbar {
     @apply hidden
 }
+
+/* Custom styles for DiseaseToDoctor page */
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Utility for no results text */
+.no-results {
+    @apply text-gray-500 text-lg mt-4;
+}
+
+

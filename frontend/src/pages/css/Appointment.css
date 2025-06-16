@@ -1,0 +1,76 @@
+.appointment-details {
+    @apply flex flex-col sm:flex-row gap-4;
+  }
+  
+  .doctor-image {
+    @apply bg-primary w-full sm:max-w-72 rounded-lg;
+  }
+  
+  .doctor-info {
+    @apply flex-1 border border-[#ADADAD] rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0;
+  }
+  
+  .doctor-name {
+    @apply flex items-center gap-2 text-3xl font-medium text-gray-700;
+  }
+  
+  .doctor-verified {
+    @apply w-5;
+  }
+  
+  .doctor-degree {
+    @apply flex items-center gap-2 mt-1 text-gray-600;
+  }
+  
+  .doctor-experience {
+    @apply py-0.5 px-2 border text-xs rounded-full;
+  }
+  
+  .doctor-about {
+    @apply flex items-center gap-1 text-sm font-medium text-[#262626] mt-3;
+  }
+  
+  .info-icon {
+    @apply w-3;
+  }
+  
+  .doctor-description {
+    @apply text-sm text-gray-600 max-w-[700px] mt-1;
+  }
+  
+  .doctor-fees {
+    @apply text-gray-600 font-medium mt-4;
+  }
+  
+  .booking-slots {
+    @apply sm:ml-72 sm:pl-4 mt-8 font-medium text-[#565656];
+  }
+  
+  .slot-day-list {
+    @apply flex gap-3 items-center w-full overflow-x-scroll mt-4;
+  }
+  
+  .slot-day {
+    @apply text-center py-6 min-w-16 rounded-full cursor-pointer border border-[#DDDDDD];
+  }
+  
+  .selected-slot {
+    @apply bg-primary text-white;
+  }
+  
+  .slot-time-list {
+    @apply flex items-center gap-3 w-full overflow-x-scroll mt-4;
+  }
+  
+  .slot-time {
+    @apply text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer text-[#949494] border border-[#B4B4B4];
+  }
+  
+  .selected-time {
+    @apply bg-primary text-white;
+  }
+  
+  .book-button {
+    @apply bg-primary text-white text-sm font-light px-20 py-3 rounded-full my-6;
+  }
+  

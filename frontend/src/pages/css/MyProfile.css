@@ -1,0 +1,88 @@
+.profile-container {
+    @apply max-w-lg flex flex-col gap-2 text-sm pt-5;
+  }
+  
+  .image-upload-container {
+    @apply inline-block relative cursor-pointer;
+  }
+  
+  .image-upload {
+    @apply w-36 rounded opacity-75;
+  }
+  
+  .upload-icon {
+    @apply w-10 absolute bottom-12 right-12;
+  }
+  
+  .profile-image {
+    @apply w-36 rounded;
+  }
+  
+  .edit-name {
+    @apply bg-gray-50 text-3xl font-medium max-w-60;
+  }
+  
+  .profile-name {
+    @apply font-medium text-3xl text-[#262626] mt-4;
+  }
+  
+  .separator {
+    @apply bg-[#ADADAD] h-[1px] border-none;
+  }
+  
+  .contact-title {
+    @apply text-gray-600 underline mt-3;
+  }
+  
+  .contact-info {
+    @apply grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-[#363636];
+  }
+  
+  .label {
+    @apply font-medium;
+  }
+  
+  .email {
+    @apply text-blue-500;
+  }
+  
+  .edit-phone {
+    @apply bg-gray-50 max-w-52;
+  }
+  
+  .edit-address {
+    @apply bg-gray-50;
+  }
+  
+  .address-text {
+    @apply text-gray-500;
+  }
+  
+  .basic-info-title {
+    @apply text-[#797979] underline mt-3;
+  }
+  
+  .basic-info {
+    @apply grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-gray-600;
+  }
+  
+  .edit-gender {
+    @apply max-w-20 bg-gray-50;
+  }
+  
+  .basic-text {
+    @apply text-gray-500;
+  }
+  
+  .edit-birthday {
+    @apply max-w-28 bg-gray-50;
+  }
+  
+  .action-buttons {
+    @apply mt-10;
+  }
+  
+  .edit-button, .save-button {
+    @apply border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all;
+  }
+  
